@@ -1,31 +1,54 @@
-export default function Navbar({ activeTab, setActiveTab }) {
-  const tabs = [
-    { id: 'home', label: '🏠 Home' },
-    { id: 'resume', label: '📄 Resume Builder' },
-    { id: 'portfolio', label: '💼 Portfolio' },
-    { id: 'forms', label: '📋 Form Builder' },
+import { Link, NavLink } from 'react-router-dom';
+
+export default function Navbar({ cartCount = 0 }) {
+  const navItems = [
+    { to: '/', label: '🏠 Overview' },
+    { to: '/resume', label: '📄 Resume', badge: 'PDF' },
+    { to: '/portfolio', label: '💼 Portfolio', badge: 'API' },
+    { to: '/forms', label: '📋 Forms', badge: 'v2' },
+    { to: '/cart', label: '🛒 Store', badge: cartCount > 0 ? `${cartCount}` : null },
   ];
 
   return (
     <nav className="navbar no-print">
       <div className="container nav-content">
-        <div className="nav-logo" onClick={() => setActiveTab('home')} style={{ cursor: 'pointer' }}>
-          <span className="logo-bracket"></span>
-          <span className="logo-text">DevStudio</span>
-          <span className="logo-bracket"></span>
-          <span className="badge-small" style={{ marginLeft: '0.5rem' }}>v2.0 Workspace</span>
-        </div>
+        <Link to="/" className="nav-logo">
+          <div className="logo-symbol">
+            <span className="logo-sparkle">✦</span>
+          </div>
+          <div className="logo-text-group">
+            <span className="logo-title">DevStudio</span>
+            <span className="logo-pro-badge">PRO</span>
+          </div>
+        </Link>
 
         <div className="nav-tabs">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              className={`nav-tab-btn ${activeTab === tab.id ? 'active' : ''}`}
-              onClick={() => setActiveTab(tab.id)}
+          {navItems.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === '/'}
+              className={({ isActive }) => `nav-tab-btn ${isActive ? 'active' : ''}`}
             >
-              {tab.label}
-            </button>
+              <span>{item.label}</span>
+              {item.badge && <span className="tab-pill-badge">{item.badge}</span>}
+            </NavLink>
           ))}
+        </div>
+
+        <div className="nav-actions">
+          <div className="system-status-indicator">
+            <span className="status-beacon"></span>
+            <span className="status-label">Operational</span>
+          </div>
+          <button
+            type="button"
+            className="btn btn-sm btn-outline nav-action-btn"
+            onClick={() => window.print()}
+            title="Quick Print"
+          >
+            🖨️ Print
+          </button>
         </div>
       </div>
     </nav>
