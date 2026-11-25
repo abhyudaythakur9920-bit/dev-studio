@@ -1,12 +1,11 @@
 import { Link, NavLink } from 'react-router-dom';
 
-export default function Navbar({ cartCount = 0 }) {
+export default function Navbar() {
   const navItems = [
     { to: '/', label: '🏠 Overview' },
     { to: '/resume', label: '📄 Resume', badge: 'PDF' },
     { to: '/portfolio', label: '💼 Portfolio', badge: 'API' },
     { to: '/forms', label: '📋 Forms', badge: 'v2' },
-    { to: '/cart', label: '🛒 Store', badge: cartCount > 0 ? `${cartCount}` : null },
   ];
 
   return (

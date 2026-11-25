@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { useLocalStorage } from './StateCart';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const RESUME_PRESETS = {
   apiEngineer: {

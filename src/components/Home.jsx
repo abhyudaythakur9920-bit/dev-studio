@@ -41,18 +41,6 @@ export default function Home() {
       features: ['8+ Input Types (Star, Select, Date)', 'Live Real-Time Field Validation', 'Portable JSON Schema Export', 'LocalStorage Response Storage'],
       btnText: 'Open Form Studio →',
       btnClass: 'btn-secondary'
-    },
-    {
-      id: 'cart',
-      path: '/cart',
-      icon: '🛒',
-      title: 'Global State & Store Sandbox',
-      tag: 'Context API + Reducer Pattern',
-      desc: 'Interactive shopping cart demonstrating Context API global state, discount voucher calculation, and quantity counters.',
-      badge: 'Context API',
-      features: ['Global CartContext State', 'Promo Code Discount Engine', 'Quantity Adjust & Subtotals', 'Persistent LocalStorage Sync'],
-      btnText: 'Open State Store →',
-      btnClass: 'btn-secondary'
     }
   ];
 
@@ -86,10 +74,6 @@ export default function Home() {
           </button>
           <button className="btn btn-secondary btn-lg" onClick={() => navigate('/forms')}>
             <span>📋 Form Studio</span>
-            <span className="btn-arrow">→</span>
-          </button>
-          <button className="btn btn-secondary btn-lg" onClick={() => navigate('/cart')}>
-            <span>🛒 State Store</span>
             <span className="btn-arrow">→</span>
           </button>
         </div>
@@ -211,7 +195,7 @@ export default function Home() {
               <p><span className="text-cyan">➜</span> <span className="text-emerald">devstudio</span> system-check --verbose</p>
               <p className="text-muted">Analyzing local browser environment...</p>
               <p><span className="text-emerald">✔</span> React Router: <span className="text-cyan">Routes &amp; Dynamic /portfolio/:id OK</span></p>
-              <p><span className="text-emerald">✔</span> Global State: <span className="text-cyan">CartContext Provider Active</span></p>
+              <p><span className="text-emerald">✔</span> Component Architecture: <span className="text-cyan">5 Core Modules Active</span></p>
               <p><span className="text-emerald">✔</span> Custom Hooks: <span className="text-cyan">useLocalStorage auto-syncing</span></p>
               <p><span className="text-emerald">✔</span> REST API Connector: <span className="text-cyan">api.github.com live fetch</span></p>
               <p className="terminal-highlight-line">⚡ All topics active. Ready for instructor demonstration and evaluation.</p>
@@ -224,8 +208,8 @@ export default function Home() {
   "project": "DevStudio Pro",
   "version": "3.0.0",
   "curriculumFeatures": {
-    "reactRouter": { "routes": ["/", "/resume", "/portfolio", "/portfolio/:id", "/forms", "/cart", "*"] },
-    "stateManagement": { "contextApi": "CartContext", "customHooks": ["useLocalStorage"], "local": "useState" },
+    "reactRouter": { "routes": ["/", "/resume", "/portfolio", "/portfolio/:id", "/forms", "*"] },
+    "stateManagement": { "customHooks": ["useLocalStorage"], "local": "useState" },
     "hooksUsed": ["useState", "useEffect", "useRef", "useMemo", "useCallback", "useParams"],
     "restApis": ["GitHub v3 API", "RandomUser API"]
   }
@@ -240,7 +224,6 @@ export default function Home() {
               <p><span className="text-cyan">Alt + 2</span> : Open Resume Builder (/resume)</p>
               <p><span className="text-cyan">Alt + 3</span> : Open Portfolio (/portfolio)</p>
               <p><span className="text-cyan">Alt + 4</span> : Open Form Studio (/forms)</p>
-              <p><span className="text-cyan">Alt + 5</span> : Open State Store (/cart)</p>
             </div>
           )}
         </div>

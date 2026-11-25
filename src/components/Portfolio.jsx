@@ -1,6 +1,6 @@
 import { useState, useMemo, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useLocalStorage, useCart } from './StateCart';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const INITIAL_PROJECTS = [
   {
@@ -63,7 +63,6 @@ const INITIAL_PROJECTS = [
 export default function Portfolio() {
   const { id: routeProjectId } = useParams(); // React Router Dynamic Route Param
   const navigate = useNavigate();
-  const { addToCart } = useCart(); // Global Context API
 
   // Persistent Project list using Custom Hook
   const [projects, setProjects] = useLocalStorage('devstudio_portfolio_projects', INITIAL_PROJECTS);
@@ -303,19 +302,12 @@ export default function Portfolio() {
               type="button"
               className="btn btn-sm btn-primary"
               onClick={() => {
-                addToCart({
-                  id: `support-${activeRouteProject.id}`,
-                  name: `${activeRouteProject.title} Cloud License`,
-                  price: 25,
-                  category: 'Support',
-                  icon: '⚡',
-                  desc: 'Managed deployment support license'
-                });
-                setNotification(`Added "${activeRouteProject.title}" license to Cart!`);
+                navigator.clipboard.writeText(window.location.href);
+                setNotification(`Copied project route link to clipboard!`);
                 setTimeout(() => setNotification(null), 3000);
               }}
             >
-              🛒 Add Project Support to Cart
+              🔗 Share Route Link
             </button>
             {activeRouteProject.github && (
               <a
